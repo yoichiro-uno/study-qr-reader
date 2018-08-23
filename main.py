@@ -50,6 +50,7 @@ def decode(frame):
     return decoded_objs
 
 def draw_positions(frame, decoded_objs):
+    count=0
     for decoded_obj in decoded_objs:
         left, top, width, height = decoded_obj.rect
         frame = cv2.rectangle(frame,
