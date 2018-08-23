@@ -8,15 +8,13 @@ import numpy as np
 import cv2
 import time
 
-
 camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 32
-rawCapture = PiRGBArray(camera, size=(640,480))
+rawCapture = PiRGBArray(camera, size=(640, 480))
 time.sleep(0.5)
 
 app = Flask(__name__)
-
 
 @app.route('/stream')
 def stream():
@@ -29,7 +27,6 @@ def gen():
         yield (b'--frame\r\n'
 	       b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
-
 def get_frame():
     camera.capture(rawCapture, format="bgr", use_video_port=True)
     frame = rawCapture.array
@@ -38,7 +35,6 @@ def get_frame():
     rawCapture.truncate(0)
 
     return jpeg.tobytes()
-
 
 def process_frame(frame):
     decoded_objs = decode(frame)
@@ -63,13 +59,3 @@ def draw_positions(frame, decoded_objs):
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=False, threaded=True)
-
-
-
-
-
-
-
-
-
-
