@@ -57,11 +57,10 @@ def draw_positions(frame, decoded_objs):
 			      (left + width, height + top),
 			      (255, 0, 0), 2)
         count=count+1
-
                  
     font = cv2.FONT_HERSHEY_SIMPLEX
 #    cv2.putText(frame,Detected QR codes: str(count),(0,0), font, 4,(0,255,0),2,cv2.LINE_AA)
-    cv2.putText(frame,str(count),(0,0), font, 4,(0,255,0),2,cv2.LINE_AA)
+    cv2.putText(frame,str(count),(10,10), font, 4,(0,255,0),2,cv2.LINE_AA)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=False, threaded=True)
