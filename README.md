@@ -1,0 +1,1 @@
+# study-qr-reader
